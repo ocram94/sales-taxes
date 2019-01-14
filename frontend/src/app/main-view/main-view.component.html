@@ -1,0 +1,100 @@
+
+<div style="text-align: center;"><h1>SALES TAXES</h1></div>
+<form (ngSubmit)="viewArray()" #form="ngForm" novalidate>
+<div class="row">
+  <!--
+  <div class="col-sm-6 contenitore">
+  
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Insert your goods</span>
+            </div>
+            <textarea class="form-control" title="eee" aria-label="With textarea" placeholder="Example:
+1 book at 12.49
+1 music CD at 14.99
+1 chocolate bar at 0.85
+. . .
+            "></textarea>
+        </div>
+   
+  </div>
+  -->
+
+  
+  <div class="col-sm-6">
+
+
+
+
+    <div *ngFor="let x of myproducts; let idx=index;">
+
+      <div *ngIf="(productsref.touched && productsref.errors) || (productsref.errors && form.submitted)" class="alert-danger">
+        Error: formatting control failed            
+      </div>
+      <div class="input-group mb-3" title="Flag it if the product is a Books,Foods or Medicines">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <input type="checkbox" name="checkbox{{idx}}" id="checkbox{{idx}}" [(ngModel)]="checkBoxSelected[idx]">
+          </div>
+        </div>
+        <input type="text" class="form-control" name="products{{idx}}" id="products{{idx}}" #productsref="ngModel" 
+              placeholder="Example: 1 book at 12.49" [(ngModel)]="products[idx]" pattern="[0-9]+\s(\w|\s)+\s(at)\s[0-9]+(\.[0-9]+)?" required>
+        <div class="input-group-append">
+          <button class="btn btn-outline-danger" type="button" id="button-addon2" (click)="delete(idx)">Delete</button>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <div *ngIf="(productsref0.touched && productsref0.errors) || (productsref0.errors && form.submitted)" class="alert-danger">
+        Error: formatting control failed            
+    </div>
+    <div class="input-group mb-3" title="Flag it if the product is a Books,Foods or Medicines">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <input type="checkbox" name="mycheckbox0" id="mycheckbox0" [(ngModel)]="checkBoxSelected0">
+        </div>
+      </div>
+      <input type="text" class="form-control" placeholder="Example: 1 book at 12.49" name="myproduct0" id="myproduct0" 
+            [(ngModel)]="products0" #productsref0="ngModel" pattern="[0-9]+\s(\w|\s)+\s(at)\s[0-9]+(\.[0-9]+)?" required>
+      <div class="input-group-append">
+          <button class="btn btn-outline-success" type="button" id="button-addon2" (click)="addInputText()">Add another one</button>
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+  <div class="col-sm-6">
+      
+      <div class="item input-group">
+        
+          <textarea style="height: 300px;" class="form-control" [value]="myresponse" disabled>
+            
+          </textarea>
+          
+      </div> 
+      
+  </div>
+  
+</div>
+
+<br/>
+
+<div class="row">
+  <div class="col-sm-12"><button type="submit" class="form-control btn btn-outline-success">SUBMIT</button></div>
+  
+</div>
+
+</form>
+
+
+
+
+  
+  
+
+
